@@ -19,4 +19,4 @@ button.addEventListener('click', event => console.log(event))
 
 }
 
-add(5);
+add(5); // this will be 5 + 2
