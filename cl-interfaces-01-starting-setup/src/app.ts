@@ -1,7 +1,7 @@
 class Department {
 // private readonly id: string
     // public name : string;
-    private employees : string[] = [];
+    protected employees : string[] = [];
 
     constructor(private readonly id: string,public name:string) {
             // this.id = id;
@@ -25,18 +25,61 @@ class Department {
     
 }
 
+class ITDepartment extends Department {
 
+constructor(id:string, public admins :string[]) {
+    super(id,'IT');
+    this.admins = admins;
+}
+}
 
+class AccountingDepartment extends Department{
 
-const accounting = new Department('unique31', 'Accounting');
+    constructor(id:string, private reports: string[]){
+        super(id, 'IT')
+    }
+    addReport(text:string){
+        this.reports.push(text);
+    }
+    printReport(){
+        console.log(this.reports);
+    }
+    addEmployee(name:string) {
+        if( name ==='Nawfal'){
+            return;
+        }
+        this.employees.push(name)
+    }
+    printEmployees() {
+
+        console.log(this.employees)
+    }
+}
+
+const it = new ITDepartment('unique31', ['Nawfal']);
 
 // you have to obligatorly use the object method to access the employees array
-accounting.addEmployee('Ali');
-accounting.addEmployee('Mohamed');
+it.addEmployee('Ali');
+it.addEmployee('Mohamed');
 
-console.log(accounting);
+console.log(it);
 
-accounting.describe();
-accounting.printEmployeeInformation()
+it.describe();
+it.printEmployeeInformation()
+
 // const accountingCopySales = {name : 'Sales' ,describe: accounting.describe};
 // accountingCopySales.describe()
+
+
+const accounting = new AccountingDepartment('d2', []);
+
+
+
+
+accounting.addReport('Something went wrong...');
+
+accounting.addEmployee('Nawfal');
+accounting.addEmployee('salam')
+accounting.printEmployees()
+accounting.printReport()
+
