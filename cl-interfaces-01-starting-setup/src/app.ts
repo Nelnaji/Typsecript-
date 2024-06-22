@@ -1,4 +1,4 @@
-class Department {
+/*class Department {
 // private readonly id: string
     // public name : string;
     protected employees : string[] = [];
@@ -6,6 +6,9 @@ class Department {
     constructor(private readonly id: string,public name:string) {
             // this.id = id;
             // this.name=name;
+    }
+    static createEmployee(name : string) {
+        return {name:name}
     }
 
     describe(this: Department) {
@@ -34,6 +37,20 @@ constructor(id:string, public admins :string[]) {
 }
 
 class AccountingDepartment extends Department{
+    protected lastReport: string;
+
+    get mostRecentReport () {
+        if(this.lastReport){
+
+            return this.lastReport;
+        }
+        throw new Error('No report found.')
+    }
+
+    set mostRecentReport(value:string) {
+        this.addReport(value);
+
+    }
 
     constructor(id:string, private reports: string[]){
         super(id, 'IT')
@@ -83,3 +100,4 @@ accounting.addEmployee('salam')
 accounting.printEmployees()
 accounting.printReport()
 
+*/
